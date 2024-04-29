@@ -1,0 +1,7 @@
+.nav{
+    transition: top 0.3s;
+
+}
+.nav::before{
+    top: -60px;
+}
