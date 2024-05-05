@@ -10,6 +10,10 @@ import UserAddData from "../../page component/useradd/UserAddData";
 import Homecard from "../../page component/homesectioncard/Homecard";
 import HomepostData from "../../page component/homepostdata/HomepostData";
 import Cradviewdetailsmake from "../../page component/card and view details/Cradviewdetailsmake";
+import Allartandcraft from "../../page component/allartandcraft/Allartandcraft";
+import MyartsandCraftList from "../../page component/myartandcraft/MyartsandCraftList";
+import PrivetRoute from "../../sharedcomponent/PrivetRoute";
+import Allcategory from "../../page component/Allcategory/Allcategory";
 
 const router = createBrowserRouter([
   {
@@ -24,19 +28,21 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        // loader: () => fetch("http://localhost:5020/usersenddata"),
+        loader:()=>fetch('http://localhost:5020/adminsenddata'),
       },
       {
         path: "/homecard",
         element: <Homecard></Homecard>,
+       
       },
       {
         path: "/homepost",
         element: <HomepostData></HomepostData>,
       },
       {
-        path:'/cardview',
+        path:'/cardview/:id',
         element:<Cradviewdetailsmake></Cradviewdetailsmake>,
+        loader:({params})=>fetch(`http://localhost:5020/usersenddata/${params.id}`)
       },
 
       {
@@ -48,13 +54,30 @@ const router = createBrowserRouter([
         element: <SignUP></SignUP>,
       },
       {
-        path: "/update",
+        path: "/update/:id",
         element: <UpdateUser></UpdateUser>,
+        loader:({params})=>fetch(`http://localhost:5020/usersenddata/${params.id}`)
       },
       {
         path: "/useradddata",
         element: <UserAddData></UserAddData>,
       },
+      {
+        path:"/allart",
+        element:<Allartandcraft></Allartandcraft>,
+        loader: ()=>fetch("http://localhost:5020/usersenddata")
+      },
+      {
+        path:"/myarts",
+        element:<PrivetRoute>
+          <MyartsandCraftList></MyartsandCraftList>
+        </PrivetRoute>
+      },
+      {
+        path:'/allcategory/:categori',
+        element:<Allcategory></Allcategory>,
+        loader:({params})=>fetch(`http://localhost:5020/adminsendcollection?category=${params.categori}`)
+      }
     ],
   },
 ]);

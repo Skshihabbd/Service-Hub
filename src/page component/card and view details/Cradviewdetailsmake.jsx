@@ -1,6 +1,12 @@
+import { useLoaderData } from "react-router-dom";
 import Navbar from "../../sharedcomponent/navbar/Navbar";
 
 const Cradviewdetailsmake = () => {
+
+  const data=useLoaderData()
+  console.log(data)
+
+  const {photourl ,price}=data
   return (
     <div>
       <Navbar></Navbar>
@@ -9,7 +15,7 @@ const Cradviewdetailsmake = () => {
           <div className="bg-[#ECEDEA] h-[90vh] border-2 border-[#1E1E1E] ">
             <img
               className=" h-5/6 w-11/12 mx-auto mt-10 hover:scale-125 transition hover:duration-1000  rounded-2xl  shadow-inner  border-2"
-              src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
+            src={photourl}
               alt=""
             />
           </div>
@@ -18,7 +24,7 @@ const Cradviewdetailsmake = () => {
           <h1 className="text-2xl">
             Titile-Plus Women Cotton Solid Soft Light
           </h1>
-          <h3>BDT $370.00</h3>
+          <h3>PRICE: {price}$</h3>
           <p>
             Maximize comfort with this printed T-shirt designed with a round
             neck and short sleeves.Look pretty in a kurta from u women's wear
@@ -40,169 +46,7 @@ const Cradviewdetailsmake = () => {
       </div>
 
       {/* details end div */}
-      {/* card design */}
-      <div className="  lg:w-11/12 mx-auto border ">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 w-8/12 lg:w-10/12 mx-auto ">
-        <div className="border-2 lg:w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        <div className="border-2 w-52 h-96">
-          <img
-            className="p-5"
-            src="https://i.ibb.co/BK6HHSy/sandy-millar-c-Q-66-Evaf5g-unsplash.jpg"
-            alt=""
-          />
-          <div className="mt-2 space-y-4 font w-5/6 h-3/6 mx-auto  ">
-            <p className="text-xl">Plus Women Cotton </p>
-            <p className="text-lg">rating:4.6</p>
-            <p>BDT 1000</p>
-            <button className="bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl  hover:bg-[#9EA18E] text-xl  text-center px-2 py-2 ">Select Option </button>
-          </div>
-        </div>
-        </div>
-      </div>
-
-      {/* card design */}
+     
 
       {/* <div>
         <section className="p-6 bg-[#F2F2F2] dark:text-gray-800">

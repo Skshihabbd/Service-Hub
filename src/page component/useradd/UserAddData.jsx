@@ -221,12 +221,12 @@ setdata(data)
                  <option disabled selected>
 Select a Category
                  </option>
-                 <option value={'Card Making'}>Card Making</option>
+                 <option value={'CardMaking'}>Card Making</option>
                  <option value={'Scrapbooking'}>Scrapbooking</option>
-                 <option value={'Paper Quilling & origami'}>Paper Quilling & origami</option>
-                 <option value={"Glass Painting"}>Glass Painting</option>
+                 <option value={'PaperQuillingorigami'}>Paper Quilling & origami</option>
+                 <option value={"GlassPainting"}>Glass Painting</option>
                  <option value={"Lampworking"}>Lampworking</option>
-                 <option value={"Glass Dying & Staining"}>Glass Dying & Staining</option>
+                 <option value={"GlassDyingStaining"}>Glass Dying & Staining</option>
                </select>
                 </div>
                 <div className="col-span-full  ">
