@@ -1,16 +1,13 @@
-
 import { useLoaderData } from "react-router-dom";
-import Allartandcraftcard from "./Allartandcraftcard";
+import AllserviceCard from "./AllserviceCard";
+import Navbar from "../../sharedcomponent/navbar/Navbar";
 
-
-const Allartandcraft = () => {
-const loadedData=useLoaderData()
+const Allservice = () => {
+    const loadedData=useLoaderData()
 console.log(loadedData)
-
-
-
     return (
         <div>
+          <Navbar></Navbar>
           <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -24,7 +21,7 @@ console.log(loadedData)
         <th>Category</th>
       </tr>
     </thead>
-  {loadedData.map(datas=><Allartandcraftcard key={datas._id} datas={datas}></Allartandcraftcard>)}
+  {loadedData.map(datas=><AllserviceCard key={datas._id} datas={datas}></AllserviceCard>)}
    
    
     
@@ -34,4 +31,4 @@ console.log(loadedData)
     );
 };
 
-export default Allartandcraft;
+export default Allservice;

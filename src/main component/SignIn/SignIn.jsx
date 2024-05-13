@@ -42,7 +42,7 @@ reset,
       })
   };
   return (
-    <div className="border-2 border-x-cyan-400 w-full min-h-screen bg-[#F3F3F3]  ">
+    <div className="border-2 border-x-cyan-400 w-full min-h-screen bg-opacity-55  ">
       {/* <Helmet>
                 <title>realstate |login</title>
             </Helmet>
@@ -85,9 +85,11 @@ reset,
           {users?<p> {success}</p>: <p className="text-center text-red-800"> Login or Go to register
           <Link to='/signup' className="text-green-500 ml-3">Register</Link></p>}
         </div>
-        <div className=" flex justify-center" ><SocialLogin></SocialLogin></div>
+        <div className=" flex justify-center mt-6" ><SocialLogin></SocialLogin></div>
       </div>
+<div className="mt-5">
 <Footer></Footer>
+</div>
       <ToastContainer />
     </div>
   );

@@ -8,12 +8,11 @@ import SignUP from "../SignUp/SignUP";
 import UpdateUser from "../../page component/updateuser/UpdateUser";
 import UserAddData from "../../page component/useradd/UserAddData";
 import Homecard from "../../page component/homesectioncard/Homecard";
-import HomepostData from "../../page component/homepostdata/HomepostData";
+
 import Cradviewdetailsmake from "../../page component/card and view details/Cradviewdetailsmake";
-import Allartandcraft from "../../page component/allartandcraft/Allartandcraft";
-import MyartsandCraftList from "../../page component/myartandcraft/MyartsandCraftList";
 import PrivetRoute from "../../sharedcomponent/PrivetRoute";
-import Allcategory from "../../page component/Allcategory/Allcategory";
+import Myservice from "../../page component/myservices/Myservice";
+import Allservice from "../../page component/allservices/Allservice";
 
 const router = createBrowserRouter([
   {
@@ -35,13 +34,12 @@ const router = createBrowserRouter([
         element: <Homecard></Homecard>,
        
       },
-      {
-        path: "/homepost",
-        element: <HomepostData></HomepostData>,
-      },
+      
       {
         path:'/cardview/:id',
-        element:<Cradviewdetailsmake></Cradviewdetailsmake>,
+        element:<PrivetRoute>
+          <Cradviewdetailsmake></Cradviewdetailsmake>
+        </PrivetRoute>,
         loader:({params})=>fetch(`http://localhost:5020/usersenddata/${params.id}`)
       },
 
@@ -63,21 +61,17 @@ const router = createBrowserRouter([
         element: <UserAddData></UserAddData>,
       },
       {
-        path:"/allart",
-        element:<Allartandcraft></Allartandcraft>,
+        path:"/allservice",
+        element:<Allservice></Allservice>,
         loader: ()=>fetch("http://localhost:5020/usersenddata")
       },
       {
-        path:"/myarts",
+        path:"/myservice",
         element:<PrivetRoute>
-          <MyartsandCraftList></MyartsandCraftList>
+         <Myservice></Myservice>
         </PrivetRoute>
       },
-      {
-        path:'/allcategory/:categori',
-        element:<Allcategory></Allcategory>,
-        loader:({params})=>fetch(`http://localhost:5020/adminsendcollection?category=${params.categori}`)
-      }
+      
     ],
   },
 ]);

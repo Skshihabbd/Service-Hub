@@ -1,8 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import Custom from "../../sharedcomponent/custom/Custom";
+import Swal from "sweetalert2";
 
 const SocialLogin = () => {
-    const { googleSignIn, githubSignIn } =Custom();
+    const { googleSignIn } =Custom();
   const location = useLocation();
   const navigation = useNavigate();
   console.log(location);
@@ -11,24 +12,25 @@ const SocialLogin = () => {
     sociallogin().then((result) => {
       console.log(result.user);
       if (result.user) {
+        Swal.fire({
+          title: "success!",
+          text: "Do you want to continue",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
         navigation(location?.state ? location.state : "/");
       }
     });
   };
   return (
-    <div className="flex flex-row gap-6">
-      <button
+    <div className="w-full flex justify-center ">
+      <button 
         onClick={() => handleSocialLogin(googleSignIn)}
-        className="btn btn-primary"
+        className="btn btn-secondary w-full text-2xl text-black "
       >
         google
       </button>
-      <button
-        onClick={() => handleSocialLogin(githubSignIn)}
-        className="btn btn-primary"
-      >
-        Github
-      </button>
+     
     </div>
   );
 };

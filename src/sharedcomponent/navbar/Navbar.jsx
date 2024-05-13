@@ -24,7 +24,7 @@ const Navbar = () => {
             <Link to={'/'}>Home</Link>
           </li>
           <li className="lg:hover:bg-[#E5E6E0]  font  lg:text-[18px] text-2xl lg:py-5 lg:px-8">
-            <Link to={'/homepost'}>Home <br /> post data</Link>
+            <Link to={'/'}>Home </Link>
           </li>
           <li className="lg:hover:bg-[#E5E6E0]  font  lg:text-[18px] text-2xl lg:py-5 lg:px-8">
             <Link to={'/'}>Home</Link>
@@ -34,7 +34,7 @@ const Navbar = () => {
             className="lg:hover:bg-[#E5E6E0]  lg:text-[18px]   text-2xl lg:py-5 lg:px-8   font  "
           >
             <span className="flex sm:flex-row lg:flex-col items-center gap-3 ">
-              <Link to={"/allart"} className="megamenu  ">All Art</Link>
+              <Link to={"/allservice"} className="megamenu  ">All Service</Link>
               <FaArrowRight className="text-xl lg:hidden" />
               <FaLongArrowAltDown className="hidden lg:flex " />
             </span>
@@ -57,7 +57,7 @@ const Navbar = () => {
             </ul>
           </li>
           <li className="lg:hover:bg-[#E5E6E0] text-2xl  font  lg:text-[18px] lg:py-5 lg:px-8">
-            <Link to={`/myarts`}>Myart</Link>
+            <Link to={`/myservice`}>Myservice</Link>
           </li>
           <button> <label className="flex cursor-pointer gap-2">
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>

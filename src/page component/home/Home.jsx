@@ -6,7 +6,7 @@ import Navbar from "../../sharedcomponent/navbar/Navbar";
 import Slider from "../slider/Slider";
 
 import "./home.css";
-import Categorycard from "./Categorycard";
+import PopularService from "./PopularService";
 const Home = () => {
 
 const datas=useLoaderData()
@@ -29,10 +29,10 @@ console.log(datas)
       <div className="">
         <Slider></Slider>
       </div>
-      <h1 className="text-3xl font-bold ml-8 my-5">Craft Category</h1>
+      <h1 className="text-3xl font-bold ml-8 my-5">Popular service</h1>
      <div className="flex flex-col gap-2 lg:flex-row justify-center w-10/12 mx-auto">
     
-{datas.map(data=><Categorycard key={data._id} data={data}></Categorycard>)}
+{datas.map(data=><PopularService key={data._id} data={data}></PopularService>)}
      </div>
 
       {/* <div>

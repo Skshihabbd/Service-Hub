@@ -1,12 +1,66 @@
 import { useLoaderData } from "react-router-dom";
 import Navbar from "../../sharedcomponent/navbar/Navbar";
+import Custom from "../../sharedcomponent/custom/Custom";
+import Footer from "../../sharedcomponent/footer/Footer";
+import Swal from "sweetalert2";
 
 const Cradviewdetailsmake = () => {
 
+  const {users}=Custom()
   const data=useLoaderData()
-  console.log(data)
+  
 
-  const {photourl ,price}=data
+  const {ServiceImage ,price,ServiceArea,username,useremail,description,ServiceName ,_id}=data
+
+
+  const handleSubmit=(e)=>{
+e.preventDefault() 
+const form=e.target 
+
+const servicePhoto=form.photourl.value 
+const prices=form.price.value 
+const Usersname=form.username.value 
+const Usersemail=form.Useremail.value
+const Servicsename=form.Servicename.value
+const Serviceid=form.Serviceid.value 
+const ServiceproviderName=form.ServiceproviderName.value 
+const provideremail=form.provideremail.value 
+const Servicedate=form.Servicedate.value
+const servicequery=form.servicequery.value 
+const status='pending'
+
+console.log(servicePhoto,Usersname,prices,Usersemail,Servicsename,Serviceid,ServiceproviderName,provideremail,Servicedate,servicequery,status)
+
+const allitem={
+  servicePhoto,Usersname,prices,Usersemail,Servicsename,Serviceid,ServiceproviderName,provideremail,Servicedate,servicequery,status
+}
+console.log(allitem) 
+
+fetch("http://localhost:5020/requestsend", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(allitem),
+})
+  .then((res) => res.json())
+  .then((info) => {
+    console.log(info)
+    if (info.acknowledged) {
+      Swal.fire({
+        title: "success!",
+        text: "Do you want to continue",
+        icon: "success",
+        confirmButtonText: "Cool",
+      });
+      form.reset()
+    }
+  });
+
+  }
+
+
+
   return (
     <div>
       <Navbar></Navbar>
@@ -15,7 +69,7 @@ const Cradviewdetailsmake = () => {
           <div className="bg-[#ECEDEA] h-[90vh] border-2 border-[#1E1E1E] ">
             <img
               className=" h-5/6 w-11/12 mx-auto mt-10 hover:scale-125 transition hover:duration-1000  rounded-2xl  shadow-inner  border-2"
-            src={photourl}
+            src={ServiceImage}
               alt=""
             />
           </div>
@@ -34,12 +88,10 @@ const Cradviewdetailsmake = () => {
           <p>Stock-Status:yes/no</p>
           <p>Processign time : 10</p>
           <p>rating:4.5</p>
-          <div className="w-full grid   lg:grid-cols-2 gap-6 ">
-            <button className="bg-[#F2F2F2] pb-5 pt-5  hover:scale-105 duration-200  hover:bg-[#9EA18E] rounded-3xl  text-center  w-full  text-3xl ">
-              Buy Now
-            </button>
-            <button className=" bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl py-5 hover:bg-[#9EA18E] text-3xl  text-center w-full ">
-              Add To Cart
+          <div className="w-full    ">
+           
+            <button onClick={()=>document.getElementById('my_modal_2').showModal()} className=" bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl py-5 hover:bg-[#9EA18E] text-3xl  text-center w-full ">
+              Purchase a Service
             </button>
           </div>
         </div>
@@ -48,7 +100,7 @@ const Cradviewdetailsmake = () => {
       {/* details end div */}
      
 
-      {/* <div>
+       {/* <div>
         <section className="p-6 bg-[#F2F2F2] dark:text-gray-800">
           <div className="container p-4 mx-auto text-center">
             <h2 className="text-4xl font-bold">
@@ -130,7 +182,180 @@ const Cradviewdetailsmake = () => {
             </div>
           </div>
         </section>
-      </div> */}
+      </div>  */}
+
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+<dialog id="my_modal_2" className="modal lg:h-[90vh]">
+ 
+  <form onSubmit={handleSubmit}
+            className="  bg-black  overflow-y-scroll  flex flex-col mx-auto space-y-2" method="dialog">
+  
+           
+          
+            <fieldset className=" border-2 w-full gap-6 p-6  mx-auto rounded-md shadow-sm dark:bg-gray-50">
+              <div className="grid lg:grid-cols-6  gap-3 col-span-full  lg:col-span-full">
+                
+
+                <div className="col-span-full sm:col-span-3">
+                  <label htmlFor="username" className="text-sm text-white">
+                    User Name
+                  </label>
+                  <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    readOnly
+                    defaultValue={users?.
+                      displayName
+                      }
+                    placeholder="Enter Service location"
+                    className="w-full   rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+                <div className="col-span-full sm:col-span-3">
+                  <label htmlFor="lastname" className="text-sm text-white">
+                    price
+                  </label>
+
+                  <input
+                    id="lastname"
+                    type="number"
+                    name="price"
+                    defaultValue={price}
+                    readOnly
+                    placeholder="Enter price Taka"
+                    className="w-full  rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+
+                <div className="col-span-full sm:col-span-3 ">
+                  <label htmlFor="email" className="text-sm text-white">
+                   User email
+                  </label>
+                  <input
+                    required
+                    id="email"
+                    type="text"
+                    name="Useremail"
+                    readOnly
+                    defaultValue={users?.email}
+                    placeholder="Enter Useremail"
+                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+                <div className="col-span-full sm:col-span-3 ">
+                  <label htmlFor="email" className="text-sm text-white">
+                    Service Name
+                  </label>
+                  <input
+                    required
+                    id="email"
+                    type="text"
+                    readOnly
+                    defaultValue={ServiceName}
+                    name="Servicename"
+                    placeholder="Enter Service Name"
+                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+                <div className="col-span-full sm:col-span-3 ">
+                  <label htmlFor="email" className="text-sm text-white">
+                    Service Id
+                  </label>
+                  <input
+                    required
+                    id="email"
+                    type="text"
+                    defaultValue={_id}
+                    readOnly
+                    name="Serviceid"
+                    placeholder="Enter Service Id"
+                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+                <div className="col-span-full sm:col-span-3 ">
+                  <label htmlFor="email" className="text-sm text-white">
+                    Service provider
+                  </label>
+                  <input
+                    required
+                    id="email"
+                    type="text"
+                    defaultValue={username}
+                    readOnly
+                    name="ServiceproviderName"
+                    placeholder="Enter Service provider"
+                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+                <div className="col-span-full sm:col-span-3 ">
+                  <label htmlFor="email" className="text-sm text-white">
+                    Service provider email
+                  </label>
+                  <input
+                    required
+                    id="email"
+                    type="email"
+                    defaultValue={useremail}
+                    readOnly
+                    name="provideremail"
+                    placeholder="Enter Service provideremail"
+                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+                <div className="col-span-full sm:col-span-3 ">
+                  <label htmlFor="email" className="text-sm text-white">
+                    Service Taking date
+                  </label>
+                  <input
+                    required
+                    id="email"
+                    type="date"
+                   
+                   
+                    name="Servicedate"
+                    placeholder="Enter Service provider"
+                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+                <div className="col-span-full  ">
+                  <label htmlFor="email" className="text-sm text-white">
+                    Service PhotoUrl
+                  </label>
+                  <input
+                    id="text"
+                    type="text"
+                    name="photourl"
+                    defaultValue={ServiceImage}
+                    readOnly
+                    placeholder="Enter photo URL"
+                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+                <div className="col-span-full  ">
+                  <label htmlFor="email" className="text-sm text-white">
+                    Service query
+                  </label>
+                  <input
+                    id="text"
+                    type="text"
+                    name="servicequery"
+                    
+                    placeholder="Enter your personal query"
+                    className="w-full h-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                  />
+                </div>
+              </div>
+            </fieldset>
+            <button  className="btn btn-block bg-black text-yellow-500">
+              Add service
+            </button>
+         
+   
+  </form>
+</dialog>
+<Footer></Footer>
     </div>
   );
 };
