@@ -59,7 +59,7 @@ fetch("http://localhost:5020/requestsend", {
     console.log(info.acknowledged)
     if (info.acknowledged) {
       Swal.fire({
-        title: "Login success!",
+        title: "Requested Successfull!",
         text: " continue",
         icon: "success",
         confirmButtonText: "Close",

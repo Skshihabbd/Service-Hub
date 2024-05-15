@@ -19,7 +19,10 @@ const Navbar = () => {
         &#9776;
       </label>
       <nav className="flex flex-row justify-between  text-2xl  lg:text-[18px]  nav bg-[#AE9467]  lg:flex lg:justify-center  ">
+       
         <ul className="navmenu  hidden lg:flex    lg:text-3xl ">
+        <li><img className="w-16 h-16 rounded-full my-3" src='https://i.ibb.co/Gpwqh9F/1600w-oqe3ybe-Ec-QQ.webp' alt="" /></li>
+        <li className=" text-white  font  lg:text-4xl lg:py-5 lg:px-8">Service Hub</li>
           <li className="lg:hover:bg-[#E5E6E0] font  font lg:text-[18px] text-2xl lg:py-5 lg:px-8">
             <Link to={'/'}>Home</Link>
           </li>

@@ -17,7 +17,7 @@ const Footer = () => {
               <li className="flex flex-row items-center gap-2">
                 <GrMapLocation className="text-3xl text-[#0c0a0a]" />
                 <Link>
-                  33 New Montgomery St. Ste 750 San Francisco, CA, USA 94105
+                 Dhaka Uttara 13 number road 5 number house
                 </Link>
               </li>
               <li className="flex flex-row items-center gap-2">
@@ -26,26 +26,13 @@ const Footer = () => {
               </li>
               <li className="flex flex-row items-center gap-2">
                 <MdOutlineMarkEmailRead className="text-3xl text-[#0c0a0a]" />
-                <Link>artistic@exampledemo.com</Link>
+                <Link>Gym@exampledemo.com</Link>
               </li>
 
               <li>
-                <ul className="flex flex-row">
-                  <li>
-                   
-                    <Link>shihab</Link>
-                  </li>
-                  <li>
-                    <Link>shihab</Link>
-                  </li>
-                  <li>
-                    <Link>shihab</Link>
-                  </li>
-                  <li>
-                    <Link>shihab</Link>
-                  </li>
-                </ul>
+             <Link to={'/'}> <img className="w-16 h-16 rounded-full my-3" src='https://i.ibb.co/Gpwqh9F/1600w-oqe3ybe-Ec-QQ.webp' alt="" /></Link>
               </li>
+             
             </ul>
           </li>
           <li>
@@ -130,8 +117,8 @@ const Footer = () => {
 
         <div className=" grid grid-cols-5 py-2 w-5/6 mx-auto items-center">
           <p className="col-span-4">
-            © 2024, Artistic - Art & Craft Store (Password: Demo) Powered By
-            Shopify
+            © 2024, Gym -Service Hub  Powered By
+           Gym
           </p>
           <ul className="flex flex-row gap-1 ">
             <li>

@@ -51,12 +51,12 @@ autoplay={{delay:1000}}
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="bg-no-repeat  bg-cover h-[40vh] w-3/6 bg-[url('https://www.shutterstock.com/shutterstock/photos/250418134/display_1500/stock-photo-human-hands-in-colorful-paint-showing-symbols-250418134.jpg')]">
+            <div className="bg-no-repeat  bg-cover h-[40vh] w-3/6 bg-[url('https://i.ibb.co/Qn56944/rodrigo-s-2mz9-IKab7-DE-unsplash.jpg')]">
             
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="bg-no-repeat  bg-cover h-[40vh] w-3/6 bg-[url('https://www.shutterstock.com/shutterstock/photos/250418134/display_1500/stock-photo-human-hands-in-colorful-paint-showing-symbols-250418134.jpg')]">
+            <div className="bg-no-repeat  bg-cover h-[40vh] w-3/6 bg-[url('https://i.ibb.co/Lz4L0Fb/meghan-holmes-bu-Wc-S7-G1-28-unsplash.jpg')]">
             
             </div>
           </SwiperSlide>

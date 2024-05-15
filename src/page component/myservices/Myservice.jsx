@@ -3,6 +3,7 @@ import Navbar from "../../sharedcomponent/navbar/Navbar";
 import Custom from "../../sharedcomponent/custom/Custom";
 import Swal from "sweetalert2";
 import MyserviceCard from "./MyserviceCard";
+import Footer from "../../sharedcomponent/footer/Footer";
 
 const Myservice = () => {
     const { users } = Custom();
@@ -54,8 +55,7 @@ const Myservice = () => {
     return (
         <div>
       <Navbar></Navbar>
-      
-      <div className="grid lg:grid-cols-4 gap-3 w-10/12 mx-auto ">
+      <h1>{state.length? <div className="grid lg:grid-cols-4 gap-3 w-10/12 mx-auto ">
         {state.map((data) => (
           <MyserviceCard
             handleDelete={handleDelete}
@@ -63,7 +63,8 @@ const Myservice = () => {
             data={data}
           ></MyserviceCard>
         ))}
-      </div>
+      </div>:'not available'}</h1>
+     <Footer></Footer>
     </div>
     );
 };

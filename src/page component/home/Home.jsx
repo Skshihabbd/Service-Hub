@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Footer from "../../sharedcomponent/footer/Footer";
 import TiTleMenu from "../../sharedcomponent/menu title/TiTleMenu";
 import Minislider from "../../sharedcomponent/minilider/Minislider";
@@ -30,11 +30,14 @@ console.log(datas)
         <Slider></Slider>
       </div>
       <h1 className="text-3xl font-bold ml-8 my-5">Popular service</h1>
-     <div className="flex flex-col gap-2 lg:flex-row justify-center w-10/12 mx-auto">
+     <div className="grid gap-2 lg:grid-cols-2 justify-center w-10/12 mx-auto">
     
 {datas.slice(1,7).map(data=><PopularService key={data._id} data={data}></PopularService>)}
      </div>
-
+<div className="lg:ml-32 my-10">
+ <p> All Services</p>
+  <button className="btn btn-primary"><Link to={'/allservice'}>Go to All Services</Link></button>
+</div>
       <div className="my-10">
          <Minislider></Minislider>
          </div>
@@ -42,7 +45,9 @@ console.log(datas)
          <Minislider></Minislider>
          </div>
         
-        
+        <div className="my-10 ">
+<img className="w-full h-svh " src="https://i.ibb.co/j6FLhBr/humphrey-muleba-d-Dp-6p-Xr-Yik-unsplash.jpg" alt="" />
+        </div>
 
       <Footer></Footer>
     </div>

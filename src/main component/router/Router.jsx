@@ -23,7 +23,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/booked",
-        element: <Booked></Booked>,
+        element: <PrivetRoute>
+          <Booked></Booked>
+        </PrivetRoute>,
         
       },
       {
