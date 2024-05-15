@@ -35,30 +35,14 @@ console.log(datas)
 {datas.slice(1,7).map(data=><PopularService key={data._id} data={data}></PopularService>)}
      </div>
 
-      {/* <div>
+      <div className="my-10">
          <Minislider></Minislider>
          </div>
          <div>
          <Minislider></Minislider>
          </div>
-         <div>
-         <Minislider></Minislider>
-         </div>
-         <div>
-         <Minislider></Minislider>
-         </div>
-         <div>
-         <Minislider></Minislider>
-         </div>
-         <div>
-         <Minislider></Minislider>
-         </div>
-         <div>
-         <Minislider></Minislider>
-         </div>
-         <div>
-         <Minislider></Minislider>
-         </div> */}
+        
+        
 
       <Footer></Footer>
     </div>

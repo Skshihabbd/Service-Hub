@@ -18,9 +18,9 @@ autoplay={{delay:1000}}
         //    spaceBetween={10}
           
         //    navigation={true}
-          pagination={{
-            clickable: true,
-          }}
+          // pagination={{
+          //   clickable: true,
+          // }}
           loop={true}
           modules={[ Navigation, Pagination  ,Autoplay]}
          bg-cover
