@@ -41,12 +41,12 @@ autoplay={{delay:1000}}
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="bg-cover bg-no-repeat w-3/6 h-[40vh] bg-[url('https://www.shutterstock.com/shutterstock/photos/2215203887/display_1500/stock-photo-camp-counselors-teaching-crafts-to-boys-at-summer-camp-2215203887.jpg')]">
+            <div className="bg-cover bg-no-repeat w-3/6 h-[40vh] bg-[url('https://i.ibb.co/j6FLhBr/humphrey-muleba-d-Dp-6p-Xr-Yik-unsplash.jpg')]">
             
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="bg-cover bg-no-repeat w-3/6 h-[40vh] bg-[url('https://www.shutterstock.com/shutterstock/photos/2215203887/display_1500/stock-photo-camp-counselors-teaching-crafts-to-boys-at-summer-camp-2215203887.jpg')]">
+            <div className="bg-cover bg-no-repeat w-3/6 h-[40vh] bg-[url('https://i.ibb.co/ZVCBwzJ/jonathan-borba-zf-POelm-Dc-M-unsplash.jpg')]">
             
             </div>
           </SwiperSlide>
