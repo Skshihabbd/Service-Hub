@@ -5,6 +5,7 @@ import { IoEyeOff } from "react-icons/io5";
 import { IoEye } from "react-icons/io5";
  import Custom from "../../sharedcomponent/custom/Custom";
 import Navbar from "../../sharedcomponent/navbar/Navbar";
+import Swal from "sweetalert2";
 
 
 // import { Helmet } from "react-helmet-async";
@@ -39,7 +40,12 @@ if(result.user){
 
 
         updateUser(name, image).then((result) => {
-          
+          Swal.fire({
+            title: "Login success!",
+            text: " continue",
+            icon: "success",
+            confirmButtonText: "Close",
+          });
           console.log("userupdated", result.user)
             .catch((error) => console.log("user not updated", error.message));
         });

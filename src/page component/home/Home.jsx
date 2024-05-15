@@ -32,7 +32,7 @@ console.log(datas)
       <h1 className="text-3xl font-bold ml-8 my-5">Popular service</h1>
      <div className="flex flex-col gap-2 lg:flex-row justify-center w-10/12 mx-auto">
     
-{datas.map(data=><PopularService key={data._id} data={data}></PopularService>)}
+{datas.slice(1,7).map(data=><PopularService key={data._id} data={data}></PopularService>)}
      </div>
 
       {/* <div>

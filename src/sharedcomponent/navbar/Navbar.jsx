@@ -23,12 +23,7 @@ const Navbar = () => {
           <li className="lg:hover:bg-[#E5E6E0] font  font lg:text-[18px] text-2xl lg:py-5 lg:px-8">
             <Link to={'/'}>Home</Link>
           </li>
-          <li className="lg:hover:bg-[#E5E6E0]  font  lg:text-[18px] text-2xl lg:py-5 lg:px-8">
-            <Link to={'/'}>Home </Link>
-          </li>
-          <li className="lg:hover:bg-[#E5E6E0]  font  lg:text-[18px] text-2xl lg:py-5 lg:px-8">
-            <Link to={'/'}>Home</Link>
-          </li>
+          
           <li
             id="rootmenu"
             className="lg:hover:bg-[#E5E6E0]  lg:text-[18px]   text-2xl lg:py-5 lg:px-8   font  "
@@ -38,27 +33,27 @@ const Navbar = () => {
               <FaArrowRight className="text-xl lg:hidden" />
               <FaLongArrowAltDown className="hidden lg:flex " />
             </span>
-            <ul
+            {users&&<ul
               id="submenu"
               className=" border-2 flex lg flex-col  invisible absolute lg:top-28 top-7 left-20 bg-slate-700 px-9 z-20 "
             >
               <li className=" text-2xl lg:hover:bg-[#E5E6E0] lg:text-[18px] text-[#CEBDB3] lg:py-5  font lg:px-8">
                 <Link>About</Link>
               </li>
+              
+             
               <li className="lg:hover:bg-[#E5E6E0] text-2xl  lg:text-[18px] text-[#CEBDB3] lg:py-5  font lg:px-8">
-                <Link>Home</Link>
+                <Link to={'/useradddata'}>Ad a Service</Link>
               </li>
-              <li className="lg:hover:bg-[#E5E6E0] text-2xl  lg:text-[18px] text-[#CEBDB3] lg:py-5  font lg:px-8">
-                <Link to={`/cardview`}>View Details</Link>
-              </li>
-              <li className="lg:hover:bg-[#E5E6E0] text-2xl  lg:text-[18px] text-[#CEBDB3] lg:py-5  font lg:px-8">
-                <Link to={'/useradddata'}>UserAddData</Link>
-              </li>
-            </ul>
+              <li className="lg:hover:bg-[#E5E6E0] text-2xl text-[#CEBDB3] font  lg:text-[18px] lg:py-5 lg:px-8">
+            <Link to={`/myservice`}>Manage service</Link>
           </li>
-          <li className="lg:hover:bg-[#E5E6E0] text-2xl  font  lg:text-[18px] lg:py-5 lg:px-8">
-            <Link to={`/myservice`}>Myservice</Link>
+              <li className="lg:hover:bg-[#E5E6E0] text-2xl text-[#CEBDB3] font  lg:text-[18px] lg:py-5 lg:px-8">
+            <Link to={`/booked`}>Booked service</Link>
           </li>
+            </ul>}
+          </li>
+        
           <button> <label className="flex cursor-pointer gap-2">
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
   <input type="checkbox" value="synthwave" className="toggle theme-controller"/>
@@ -82,7 +77,7 @@ const Navbar = () => {
               <p> {users?users.displayName:"user not exist"
   }</p>
               <p className=" ">{users?.email}</p>
-              <p><Link to={'/update'}>Update profile</Link></p>
+              {/* <p><Link to={'/update'}>Update profile</Link></p> */}
               <button onClick={logOut}>LogOut</button>
             </div>
           </div> :<li className="mt-6 list-none ml-9"><Link className="text-center  login  " to={'/signin'}><GrUserManager className="text-3xl" /></Link></li>
@@ -97,7 +92,7 @@ const Navbar = () => {
         content="please login at first"
       />
 
-      <Tooltip className="z-10" anchorSelect=".navmenu" content="go to home" />
+     
     </div>
   );
 };

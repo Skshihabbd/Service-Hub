@@ -13,6 +13,7 @@ import Cradviewdetailsmake from "../../page component/card and view details/Crad
 import PrivetRoute from "../../sharedcomponent/PrivetRoute";
 import Myservice from "../../page component/myservices/Myservice";
 import Allservice from "../../page component/allservices/Allservice";
+import Booked from "../../page component/booked service/Booked";
 
 const router = createBrowserRouter([
   {
@@ -21,13 +22,14 @@ const router = createBrowserRouter([
     errorElement: <Errorpage></Errorpage>,
     children: [
       {
-        path: "/navbar",
-        element: <Navbar></Navbar>,
+        path: "/booked",
+        element: <Booked></Booked>,
+        
       },
       {
         path: "/",
         element: <Home></Home>,
-        loader:()=>fetch('http://localhost:5020/adminsenddata'),
+        loader:()=>fetch('https://server-shihab.vercel.app/adminsenddata'),
       },
       {
         path: "/homecard",

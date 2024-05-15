@@ -2,12 +2,21 @@ import { useLoaderData } from "react-router-dom";
 import Navbar from "../../sharedcomponent/navbar/Navbar";
 import Custom from "../../sharedcomponent/custom/Custom";
 import Footer from "../../sharedcomponent/footer/Footer";
+import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState } from 'react'
 import Swal from "sweetalert2";
-
 const Cradviewdetailsmake = () => {
-
+  let [isOpen, setIsOpen] = useState(true)
   const {users}=Custom()
   const data=useLoaderData()
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
   
 
   const {ServiceImage ,price,ServiceArea,username,useremail,description,ServiceName ,_id}=data
@@ -46,13 +55,17 @@ fetch("http://localhost:5020/requestsend", {
   .then((res) => res.json())
   .then((info) => {
     console.log(info)
+    
+    console.log(info.acknowledged)
     if (info.acknowledged) {
       Swal.fire({
-        title: "success!",
-        text: "Do you want to continue",
+        title: "Login success!",
+        text: " continue",
         icon: "success",
-        confirmButtonText: "Cool",
+        confirmButtonText: "Close",
       });
+      
+       
       form.reset()
     }
   });
@@ -76,23 +89,24 @@ fetch("http://localhost:5020/requestsend", {
         </div>
         <div className="space-y-8 font border-2 ">
           <h1 className="text-2xl">
-            Titile-Plus Women Cotton Solid Soft Light
+           {ServiceName}
           </h1>
           <h3>PRICE: {price}$</h3>
           <p>
-            Maximize comfort with this printed T-shirt designed with a round
-            neck and short sleeves.Look pretty in a kurta from u women's wear
-            and get it in pink. limeroad has something...
+           {description}
           </p>
           <hr />
-          <p>Stock-Status:yes/no</p>
-          <p>Processign time : 10</p>
-          <p>rating:4.5</p>
+          <p>Service Aria{ServiceArea}</p>
+          <p>Provider Name:-{username}</p>
+          <p>Provider Email:- {useremail}</p>
+          <p>Service Id:- {_id}</p>
           <div className="w-full    ">
            
-            <button onClick={()=>document.getElementById('my_modal_2').showModal()} className=" bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl py-5 hover:bg-[#9EA18E] text-3xl  text-center w-full ">
+           {users?.email===useremail ? <button disabled onClick={openModal} className=" bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl py-5 hover:bg-[#9EA18E] text-3xl  text-center w-full ">
               Purchase a Service
-            </button>
+            </button>: <button  onClick={openModal} className=" bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl py-5 hover:bg-[#9EA18E] text-3xl  text-center w-full ">
+              Purchase a Service
+            </button>}
           </div>
         </div>
       </div>
@@ -184,11 +198,38 @@ fetch("http://localhost:5020/requestsend", {
         </section>
       </div>  */}
 
-      {/* Open the modal using document.getElementById('ID').showModal() method */}
+<div>
 
-<dialog id="my_modal_2" className="modal lg:h-[90vh]">
- 
-  <form onSubmit={handleSubmit}
+
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                 
+                  <div className="mt-2">
+                  <form onSubmit={handleSubmit}
             className="  bg-black  overflow-y-scroll  flex flex-col mx-auto space-y-2" method="dialog">
   
            
@@ -338,6 +379,7 @@ fetch("http://localhost:5020/requestsend", {
                     Service query
                   </label>
                   <input
+                  required
                     id="text"
                     type="text"
                     name="servicequery"
@@ -348,13 +390,32 @@ fetch("http://localhost:5020/requestsend", {
                 </div>
               </div>
             </fieldset>
-            <button  className="btn btn-block bg-black text-yellow-500">
+           {users.email===useremail? <button disabled className="btn btn-block bg-black text-yellow-500">
               Add service
-            </button>
+            </button>: <button  className="btn btn-block bg-black text-yellow-500">
+              Add service
+            </button>}
          
    
   </form>
-</dialog>
+                  </div>
+
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      onClick={closeModal}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+</div>
 <Footer></Footer>
     </div>
   );

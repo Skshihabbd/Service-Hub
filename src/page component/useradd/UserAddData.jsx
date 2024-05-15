@@ -66,7 +66,7 @@ const UserAddData = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
-          // form.reset()
+          form.reset()
         }
       });
   };
@@ -103,8 +103,13 @@ const UserAddData = () => {
                       <option disabled selected>
                         Service Name
                       </option>
-                      <option value={"zym"}>zym</option>
-                      <option value={"Fat reduction"}>Fat reduction</option>
+                      
+                      <option value={"Personal training"}>Personal training</option>
+                      <option value={"Group Fitness"}>Group Fitness</option>
+                      <option value={"Nutrition Coaching"}>Nutrition Coaching</option>
+                      <option value={"Gym Menberships"}>Gym Menberships</option>
+                      <option value={"Speciallity Program"}>Speciallity Program</option>
+                      <option value={"Wellness Service"}>Wellness Service</option>
                     </select>
                   </div>
                 </div>
@@ -114,6 +119,7 @@ const UserAddData = () => {
                     Service Area
                   </label>
                   <input
+                  required
                     id="username"
                     type="text"
                     name="Area"
@@ -127,6 +133,7 @@ const UserAddData = () => {
                   </label>
 
                   <input
+                  required
                     id="lastname"
                     type="number"
                     name="price"
@@ -153,6 +160,7 @@ const UserAddData = () => {
                     Service PhotoUrl
                   </label>
                   <input
+                  required
                     id="text"
                     type="text"
                     name="photourl"

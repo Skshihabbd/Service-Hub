@@ -1,33 +1,30 @@
 import { Link } from "react-router-dom";
 
 const AllserviceCard = ({datas}) => {
-    const {name,price ,
-        categories,stocks,ServiceImage,_id
+    const {ServiceImage,userImage,description,ServiceName,price,_id,
+      username
+      
         }=datas
+ // 
+         
+
     return (
         
-        <tbody>
-        {/* row 1 */}
-        <tr>
-          
-          <td>
-          <img className="w-10 h-10 rounded-full" src={ServiceImage} alt="Avatar Tailwind CSS Component" />
-          </td>
-          <td>
-           {name}
-           
-          </td>
-          <td>{price}</td>
-          <td>{categories}</td>
-          <td>{stocks}</td>
-          <th>
-           <Link to={`/cardview/${_id}`}> <button className="btn btn-ghost btn-xs">View details</button> </Link>
-          </th>
-        </tr>
-      
-        
-        
-      </tbody> 
+       <div>
+        <div className="card card-side bg-base-100 shadow-xl flex flex-col justify-center lg:flex-row">
+  <figure><img className="w-52 h-52" src={ServiceImage} alt="Movie"/></figure>
+  <div className="card-body lg:w-6/12">
+    <h2 className="card-title">{ServiceName}</h2>
+    <p className="lg:w-6/12  ">{description}</p>
+    <p className="text-2xl"><span className="text-3xl font-bold">Price:-</span>{price}$</p>
+    <p>Service Provider:{username} <img className="w-7 h-7 rounded-full" src={userImage} alt="" /></p>
+    <div className="card-actions justify-end">
+      <button className="btn btn-primary"> <Link to={`/cardview/${_id}`}> <button className="btn btn-ghost btn-xs">View details</button> </Link></button>
+    </div>
+  </div>
+</div>
+       </div> 
+         
     );
 };
 

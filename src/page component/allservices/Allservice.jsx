@@ -8,24 +8,13 @@ console.log(loadedData)
     return (
         <div>
           <Navbar></Navbar>
-          <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-        
-        <th>Image</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Stock</th>
-        <th>Category</th>
-      </tr>
-    </thead>
+          <div className="grid grid-cols-1  gap-4">
+  
   {loadedData.map(datas=><AllserviceCard key={datas._id} datas={datas}></AllserviceCard>)}
    
    
     
-  </table>
+ 
 </div> 
         </div>
     );

@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
  import Custom from "../../sharedcomponent/custom/Custom";
 import SocialLogin from "../../page component/SocialLogin/SocialLogin";
 import Footer from "../../sharedcomponent/footer/Footer";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
    const{SignIn ,users}=Custom();
@@ -33,7 +34,14 @@ reset,
       SignIn(email,password)
       .then(result=>{
         console.log(result.user)
-        setSuccess(toast("login successfull"))
+       
+        Swal.fire({
+            title: "Login success!",
+            text: " continue",
+            icon: "success",
+            confirmButtonText: "Close",
+          });
+       
         reset()
     navigate(location?.state?location.state:"/")
       }).catch(errores=>{

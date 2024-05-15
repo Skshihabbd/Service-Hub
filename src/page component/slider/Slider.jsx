@@ -31,38 +31,38 @@ const Slider = () => {
          
         >
           <SwiperSlide className="">
-            <div className="bg-cover bg-no-repeat  h-[80vh]  bg-[url('https://artistic-codezeel.myshopify.com/cdn/shop/files/cms-banner-2.jpg?v=1652437717')]">
-            <h1 className="text-7xl text-rose-900" 
-              >shihab sk we are going to tarvel</h1>
-              <Fade cascade>
+            <div className="bg-cover  h-[80vh]  bg-[url('https://i.ibb.co/c2vhFDh/total-shape-w-XBK9-Jr-M0i-U-unsplash.jpg')]">
+            {/* <h1 className="text-7xl text-rose-900" 
+              >shihab sk we are going to tarvel</h1> */}
+              {/* <Fade cascade>
   <p>I enter first...</p>
   <p>...then comes my turn...</p>
   <p>...and finally you see me!</p>
-</Fade>
+</Fade> */}
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="bg-cover bg-no-repeat  h-[80vh]  bg-[url('https://artistic-codezeel.myshopify.com/cdn/shop/files/main-banner-1_1903x650.jpg?v=1652420060;')]">
+            <div className="bg-cover bg-no-repeat  h-[80vh]  bg-[url('https://i.ibb.co/N14kPrM/gina-lin-m27-OTMeg-Uy-A-unsplash.jpg')]">
            
-              <Slide direction="down" duration={1000} >
+              {/* <Slide direction="down" duration={1000} >
               <h1 className="text-7xl text-rose-900"
               >shihab sk our new mission</h1>
   <p>I enter first...</p>
   <p>...then comes my turn...</p>
   <p>...and finally you see me!</p>
-</Slide>
+</Slide> */}
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="bg-cover bg-no-repeat  h-[80vh] bg-[url('https://artistic-codezeel.myshopify.com/cdn/shop/files/cms-banner-2.jpg?v=1652437717')]">
-            <h1 className="text-7xl text-rose-900"
-              >shihab sk shudkhkcfdsvhfdhvbfd</h1>
+            <div className="bg-cover bg-no-repeat  h-[80vh] bg-[url('https://i.ibb.co/85GHVd0/logan-weaver-lgnwvr-mi4-Gfdl36yg-unsplash.jpg')]">
+            {/* <h1 className="text-7xl text-rose-900"
+              >shihab sk shudkhkcfdsvhfdhvbfd</h1> */}
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="bg-cover bg-no-repeat  h-[80vh]  bg-[url('https://artistic-codezeel.myshopify.com/cdn/shop/files/main-banner-2_1903x650.jpg?v=1652420082;')]">
-            <h1 className="text-7xl text-rose-900"
-              >shihab sk shudkhkcfdsvhfdhvbfd</h1>
+            <div className="bg-cover bg-no-repeat  h-[80vh]  bg-[url('https://i.ibb.co/vhq5zKM/sam-moghadam-khamseh-Z4-Q9-KHw9of-E-unsplash.jpg')]">
+            {/* <h1 className="text-7xl text-rose-900"
+              >shihab sk shudkhkcfdsvhfdhvbfd</h1> */}
             </div>
           </SwiperSlide>
         </Swiper>
