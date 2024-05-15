@@ -26,12 +26,12 @@ autoplay={{delay:1000}}
          bg-cover
         >
           <SwiperSlide className="">
-            <div className="bg-cover bg-no-repeat w-3/6 h-[40vh]  bg-[url('https://housing.com/news/wp-content/uploads/2023/07/15-easy-craft-ideas-for-kids-at-home-f.jpg')]">
+            <div className="bg-cover bg-no-repeat w-3/6 h-[40vh]  bg-[url('https://i.ibb.co/swjhcqm/anastase-maragos-7k-Ep-UPB8v-Nk-unsplash.jpg')]">
             
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className=" bg-cover bg-no-repeat w-3/6 h-[40vh]  bg-[url('https://thumbs.dreamstime.com/z/craft-supplies-knitting-creative-handmade-yellow-top-view-set-organizing-diy-elements-border-design-craft-159372040.jpg?ct=jpeg')]">
+            <div className=" bg-cover bg-no-repeat w-3/6 h-[40vh]  bg-[url('https://i.ibb.co/1vHPqGc/samuel-girven-VJ2s0c20q-Co-unsplash.jpg')]">
            
             </div>
           </SwiperSlide>
