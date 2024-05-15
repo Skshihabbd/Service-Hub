@@ -36,7 +36,7 @@ autoplay={{delay:1000}}
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className=" bg-cover bg-no-repeat w-3/6 h-[40vh]  bg-[url('https://thumbs.dreamstime.com/z/craft-supplies-knitting-creative-handmade-yellow-top-view-set-organizing-diy-elements-border-design-craft-159372040.jpg?ct=jpeg')]">
+            <div className=" bg-cover bg-no-repeat w-3/6 h-[40vh]  bg-[url('https://i.ibb.co/CnjxQsR/humphrey-muleba-LOA2m-Tj1vhc-unsplash.jpg')]">
            
             </div>
           </SwiperSlide>
