@@ -41,7 +41,7 @@ const UpdateUser = () => {
       ServiceName,
     };
     console.log(Serviceinfo);
-    fetch(`http://localhost:5020/usersenddata/${_id}`, {
+    fetch(`https://server-shihab.vercel.app/usersenddata/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const UpdateUser = () => {
             icon: "success",
             confirmButtonText: "close",
           });
-          form.reset()
+          form.reset();
         }
       });
   };
@@ -116,7 +116,7 @@ const UpdateUser = () => {
                     Service Area
                   </label>
                   <input
-                  required
+                    required
                     id="username"
                     type="text"
                     name="Area"
@@ -130,7 +130,7 @@ const UpdateUser = () => {
                   </label>
 
                   <input
-                  required
+                    required
                     id="lastname"
                     type="number"
                     name="price"
@@ -157,7 +157,7 @@ const UpdateUser = () => {
                     Service PhotoUrl
                   </label>
                   <input
-                  required
+                    required
                     id="text"
                     type="text"
                     name="photourl"

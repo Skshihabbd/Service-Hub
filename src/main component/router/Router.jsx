@@ -23,28 +23,31 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/booked",
-        element: <PrivetRoute>
-          <Booked></Booked>
-        </PrivetRoute>,
-        
+        element: (
+          <PrivetRoute>
+            <Booked></Booked>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/",
         element: <Home></Home>,
-        loader:()=>fetch('https://server-shihab.vercel.app/adminsenddata'),
+        loader: () => fetch("https://server-shihab.vercel.app/adminsenddata"),
       },
       {
         path: "/homecard",
         element: <Homecard></Homecard>,
-       
       },
-      
+
       {
-        path:'/cardview/:id',
-        element:<PrivetRoute>
-          <Cradviewdetailsmake></Cradviewdetailsmake>
-        </PrivetRoute>,
-        loader:({params})=>fetch(`http://localhost:5020/usersenddata/${params.id}`)
+        path: "/cardview/:id",
+        element: (
+          <PrivetRoute>
+            <Cradviewdetailsmake></Cradviewdetailsmake>
+          </PrivetRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://server-shihab.vercel.app/usersenddata/${params.id}`),
       },
 
       {
@@ -58,24 +61,26 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <UpdateUser></UpdateUser>,
-        loader:({params})=>fetch(`http://localhost:5020/usersenddata/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`https://server-shihab.vercel.app/usersenddata/${params.id}`),
       },
       {
         path: "/useradddata",
         element: <UserAddData></UserAddData>,
       },
       {
-        path:"/allservice",
-        element:<Allservice></Allservice>,
-        loader: ()=>fetch("http://localhost:5020/usersenddata")
+        path: "/allservice",
+        element: <Allservice></Allservice>,
+        loader: () => fetch("https://server-shihab.vercel.app/usersenddata"),
       },
       {
-        path:"/myservice",
-        element:<PrivetRoute>
-         <Myservice></Myservice>
-        </PrivetRoute>
+        path: "/myservice",
+        element: (
+          <PrivetRoute>
+            <Myservice></Myservice>
+          </PrivetRoute>
+        ),
       },
-      
     ],
   },
 ]);

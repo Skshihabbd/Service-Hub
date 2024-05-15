@@ -11,7 +11,7 @@ const Booked = () => {
     const[info,setInfo]=useState([])
     console.log(info)
     useEffect(()=>{
-        fetch(`http://localhost:5020/requestsendcollection?Usersemail=${users?.email}`)
+        fetch(`https://server-shihab.vercel.app/requestsendcollection?Usersemail=${users?.email}`)
         .then(res=>res.json())
         .then(data=>setInfo(data))
     },[users])

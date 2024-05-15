@@ -2,125 +2,153 @@ import { useLoaderData } from "react-router-dom";
 import Navbar from "../../sharedcomponent/navbar/Navbar";
 import Custom from "../../sharedcomponent/custom/Custom";
 import Footer from "../../sharedcomponent/footer/Footer";
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 const Cradviewdetailsmake = () => {
-  let [isOpen, setIsOpen] = useState(true)
-  const {users}=Custom()
-  const data=useLoaderData()
+  let [isOpen, setIsOpen] = useState(true);
+  const { users } = Custom();
+  const data = useLoaderData();
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   function openModal() {
-    setIsOpen(true)
+    setIsOpen(true);
   }
-  
 
-  const {ServiceImage ,price,ServiceArea,username,useremail,description,ServiceName ,_id}=data
+  const {
+    ServiceImage,
+    price,
+    ServiceArea,
+    username,
+    useremail,
+    description,
+    ServiceName,
+    _id,
+  } = data;
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
 
-  const handleSubmit=(e)=>{
-e.preventDefault() 
-const form=e.target 
+    const servicePhoto = form.photourl.value;
+    const prices = form.price.value;
+    const Usersname = form.username.value;
+    const Usersemail = form.Useremail.value;
+    const Servicsename = form.Servicename.value;
+    const Serviceid = form.Serviceid.value;
+    const ServiceproviderName = form.ServiceproviderName.value;
+    const provideremail = form.provideremail.value;
+    const Servicedate = form.Servicedate.value;
+    const servicequery = form.servicequery.value;
+    const status = "pending";
 
-const servicePhoto=form.photourl.value 
-const prices=form.price.value 
-const Usersname=form.username.value 
-const Usersemail=form.Useremail.value
-const Servicsename=form.Servicename.value
-const Serviceid=form.Serviceid.value 
-const ServiceproviderName=form.ServiceproviderName.value 
-const provideremail=form.provideremail.value 
-const Servicedate=form.Servicedate.value
-const servicequery=form.servicequery.value 
-const status='pending'
+    console.log(
+      servicePhoto,
+      Usersname,
+      prices,
+      Usersemail,
+      Servicsename,
+      Serviceid,
+      ServiceproviderName,
+      provideremail,
+      Servicedate,
+      servicequery,
+      status
+    );
 
-console.log(servicePhoto,Usersname,prices,Usersemail,Servicsename,Serviceid,ServiceproviderName,provideremail,Servicedate,servicequery,status)
+    const allitem = {
+      servicePhoto,
+      Usersname,
+      prices,
+      Usersemail,
+      Servicsename,
+      Serviceid,
+      ServiceproviderName,
+      provideremail,
+      Servicedate,
+      servicequery,
+      status,
+    };
+    console.log(allitem);
 
-const allitem={
-  servicePhoto,Usersname,prices,Usersemail,Servicsename,Serviceid,ServiceproviderName,provideremail,Servicedate,servicequery,status
-}
-console.log(allitem) 
+    fetch("https://server-shihab.vercel.app/requestsend", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(allitem),
+    })
+      .then((res) => res.json())
+      .then((info) => {
+        console.log(info);
 
-fetch("http://localhost:5020/requestsend", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(allitem),
-})
-  .then((res) => res.json())
-  .then((info) => {
-    console.log(info)
-    
-    console.log(info.acknowledged)
-    if (info.acknowledged) {
-      Swal.fire({
-        title: "Requested Successfull!",
-        text: " continue",
-        icon: "success",
-        confirmButtonText: "Close",
+        console.log(info.acknowledged);
+        if (info.acknowledged) {
+          Swal.fire({
+            title: "Requested Successfull!",
+            text: " continue",
+            icon: "success",
+            confirmButtonText: "Close",
+          });
+
+          form.reset();
+        }
       });
-      
-       
-      form.reset()
-    }
-  });
-
-  }
-
-
+  };
 
   return (
     <div>
       <Helmet>
-               
-               <title>Service Hub || View details</title>
-              
-           </Helmet>
+        <title>Service Hub || View details</title>
+      </Helmet>
       <Navbar></Navbar>
       <div className="mt-10 border-2 lg:grid grid-rows-1 lg:grid-cols-2 w-10/12 mx-auto gap-8">
         <div className="border-2">
           <div className="bg-[#ECEDEA] h-[90vh] border-2 border-[#1E1E1E] ">
             <img
               className=" h-5/6 w-11/12 mx-auto mt-10 hover:scale-125 transition hover:duration-1000  rounded-2xl  shadow-inner  border-2"
-            src={ServiceImage}
+              src={ServiceImage}
               alt=""
             />
           </div>
         </div>
         <div className="space-y-8 font border-2 ">
-          <h1 className="text-2xl">
-           {ServiceName}
-          </h1>
+          <h1 className="text-2xl">{ServiceName}</h1>
           <h3>PRICE: {price}$</h3>
-          <p>
-           {description}
-          </p>
+          <p>{description}</p>
           <hr />
           <p>Service Aria{ServiceArea}</p>
           <p>Provider Name:-{username}</p>
           <p>Provider Email:- {useremail}</p>
           <p>Service Id:- {_id}</p>
           <div className="w-full    ">
-           
-           {users?.email===useremail ? <button disabled onClick={openModal} className=" bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl py-5 hover:bg-[#9EA18E] text-3xl  text-center w-full ">
-              Purchase a Service
-            </button>: <button  onClick={openModal} className=" bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl py-5 hover:bg-[#9EA18E] text-3xl  text-center w-full ">
-              Purchase a Service
-            </button>}
+            {users?.email === useremail ? (
+              <button
+                disabled
+                onClick={openModal}
+                className=" bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl py-5 hover:bg-[#9EA18E] text-3xl  text-center w-full "
+              >
+                Purchase a Service
+              </button>
+            ) : (
+              <button
+                onClick={openModal}
+                className=" bg-[#F2F2F2] hover:scale-105 duration-200 rounded-3xl py-5 hover:bg-[#9EA18E] text-3xl  text-center w-full "
+              >
+                Purchase a Service
+              </button>
+            )}
           </div>
         </div>
       </div>
 
       {/* details end div */}
-     
 
-       {/* <div>
+      {/* <div>
         <section className="p-6 bg-[#F2F2F2] dark:text-gray-800">
           <div className="container p-4 mx-auto text-center">
             <h2 className="text-4xl font-bold">
@@ -204,225 +232,250 @@ fetch("http://localhost:5020/requestsend", {
         </section>
       </div>  */}
 
-<div>
+      <div>
+        <Transition appear show={isOpen} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black/25" />
+            </Transition.Child>
 
+            <div className="fixed inset-0 overflow-y-auto">
+              <div className="flex min-h-full items-center justify-center p-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                    <div className="mt-2">
+                      <form
+                        onSubmit={handleSubmit}
+                        className="  bg-black  overflow-y-scroll  flex flex-col mx-auto space-y-2"
+                        method="dialog"
+                      >
+                        <fieldset className=" border-2 w-full gap-6 p-6  mx-auto rounded-md shadow-sm dark:bg-gray-50">
+                          <div className="grid lg:grid-cols-6  gap-3 col-span-full  lg:col-span-full">
+                            <div className="col-span-full sm:col-span-3">
+                              <label
+                                htmlFor="username"
+                                className="text-sm text-white"
+                              >
+                                User Name
+                              </label>
+                              <input
+                                id="username"
+                                type="text"
+                                name="username"
+                                readOnly
+                                defaultValue={users?.displayName}
+                                placeholder="Enter Service location"
+                                className="w-full   rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
+                            <div className="col-span-full sm:col-span-3">
+                              <label
+                                htmlFor="lastname"
+                                className="text-sm text-white"
+                              >
+                                price
+                              </label>
 
-      <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black/25" />
-          </Transition.Child>
+                              <input
+                                id="lastname"
+                                type="number"
+                                name="price"
+                                defaultValue={price}
+                                readOnly
+                                placeholder="Enter price Taka"
+                                className="w-full  rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
 
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                 
-                  <div className="mt-2">
-                  <form onSubmit={handleSubmit}
-            className="  bg-black  overflow-y-scroll  flex flex-col mx-auto space-y-2" method="dialog">
-  
-           
-          
-            <fieldset className=" border-2 w-full gap-6 p-6  mx-auto rounded-md shadow-sm dark:bg-gray-50">
-              <div className="grid lg:grid-cols-6  gap-3 col-span-full  lg:col-span-full">
-                
+                            <div className="col-span-full sm:col-span-3 ">
+                              <label
+                                htmlFor="email"
+                                className="text-sm text-white"
+                              >
+                                User email
+                              </label>
+                              <input
+                                required
+                                id="email"
+                                type="text"
+                                name="Useremail"
+                                readOnly
+                                defaultValue={users?.email}
+                                placeholder="Enter Useremail"
+                                className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
+                            <div className="col-span-full sm:col-span-3 ">
+                              <label
+                                htmlFor="email"
+                                className="text-sm text-white"
+                              >
+                                Service Name
+                              </label>
+                              <input
+                                required
+                                id="email"
+                                type="text"
+                                readOnly
+                                defaultValue={ServiceName}
+                                name="Servicename"
+                                placeholder="Enter Service Name"
+                                className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
+                            <div className="col-span-full sm:col-span-3 ">
+                              <label
+                                htmlFor="email"
+                                className="text-sm text-white"
+                              >
+                                Service Id
+                              </label>
+                              <input
+                                required
+                                id="email"
+                                type="text"
+                                defaultValue={_id}
+                                readOnly
+                                name="Serviceid"
+                                placeholder="Enter Service Id"
+                                className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
+                            <div className="col-span-full sm:col-span-3 ">
+                              <label
+                                htmlFor="email"
+                                className="text-sm text-white"
+                              >
+                                Service provider
+                              </label>
+                              <input
+                                required
+                                id="email"
+                                type="text"
+                                defaultValue={username}
+                                readOnly
+                                name="ServiceproviderName"
+                                placeholder="Enter Service provider"
+                                className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
+                            <div className="col-span-full sm:col-span-3 ">
+                              <label
+                                htmlFor="email"
+                                className="text-sm text-white"
+                              >
+                                Service provider email
+                              </label>
+                              <input
+                                required
+                                id="email"
+                                type="email"
+                                defaultValue={useremail}
+                                readOnly
+                                name="provideremail"
+                                placeholder="Enter Service provideremail"
+                                className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
+                            <div className="col-span-full sm:col-span-3 ">
+                              <label
+                                htmlFor="email"
+                                className="text-sm text-white"
+                              >
+                                Service Taking date
+                              </label>
+                              <input
+                                required
+                                id="email"
+                                type="date"
+                                name="Servicedate"
+                                placeholder="Enter Service provider"
+                                className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
+                            <div className="col-span-full  ">
+                              <label
+                                htmlFor="email"
+                                className="text-sm text-white"
+                              >
+                                Service PhotoUrl
+                              </label>
+                              <input
+                                id="text"
+                                type="text"
+                                name="photourl"
+                                defaultValue={ServiceImage}
+                                readOnly
+                                placeholder="Enter photo URL"
+                                className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
+                            <div className="col-span-full  ">
+                              <label
+                                htmlFor="email"
+                                className="text-sm text-white"
+                              >
+                                Service query
+                              </label>
+                              <input
+                                required
+                                id="text"
+                                type="text"
+                                name="servicequery"
+                                placeholder="Enter your personal query"
+                                className="w-full h-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                              />
+                            </div>
+                          </div>
+                        </fieldset>
+                        {users.email === useremail ? (
+                          <button
+                            disabled
+                            className="btn btn-block bg-black text-yellow-500"
+                          >
+                            Add service
+                          </button>
+                        ) : (
+                          <button className="btn btn-block bg-black text-yellow-500">
+                            Add service
+                          </button>
+                        )}
+                      </form>
+                    </div>
 
-                <div className="col-span-full sm:col-span-3">
-                  <label htmlFor="username" className="text-sm text-white">
-                    User Name
-                  </label>
-                  <input
-                    id="username"
-                    type="text"
-                    name="username"
-                    readOnly
-                    defaultValue={users?.
-                      displayName
-                      }
-                    placeholder="Enter Service location"
-                    className="w-full   rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className="col-span-full sm:col-span-3">
-                  <label htmlFor="lastname" className="text-sm text-white">
-                    price
-                  </label>
-
-                  <input
-                    id="lastname"
-                    type="number"
-                    name="price"
-                    defaultValue={price}
-                    readOnly
-                    placeholder="Enter price Taka"
-                    className="w-full  rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-
-                <div className="col-span-full sm:col-span-3 ">
-                  <label htmlFor="email" className="text-sm text-white">
-                   User email
-                  </label>
-                  <input
-                    required
-                    id="email"
-                    type="text"
-                    name="Useremail"
-                    readOnly
-                    defaultValue={users?.email}
-                    placeholder="Enter Useremail"
-                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className="col-span-full sm:col-span-3 ">
-                  <label htmlFor="email" className="text-sm text-white">
-                    Service Name
-                  </label>
-                  <input
-                    required
-                    id="email"
-                    type="text"
-                    readOnly
-                    defaultValue={ServiceName}
-                    name="Servicename"
-                    placeholder="Enter Service Name"
-                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className="col-span-full sm:col-span-3 ">
-                  <label htmlFor="email" className="text-sm text-white">
-                    Service Id
-                  </label>
-                  <input
-                    required
-                    id="email"
-                    type="text"
-                    defaultValue={_id}
-                    readOnly
-                    name="Serviceid"
-                    placeholder="Enter Service Id"
-                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className="col-span-full sm:col-span-3 ">
-                  <label htmlFor="email" className="text-sm text-white">
-                    Service provider
-                  </label>
-                  <input
-                    required
-                    id="email"
-                    type="text"
-                    defaultValue={username}
-                    readOnly
-                    name="ServiceproviderName"
-                    placeholder="Enter Service provider"
-                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className="col-span-full sm:col-span-3 ">
-                  <label htmlFor="email" className="text-sm text-white">
-                    Service provider email
-                  </label>
-                  <input
-                    required
-                    id="email"
-                    type="email"
-                    defaultValue={useremail}
-                    readOnly
-                    name="provideremail"
-                    placeholder="Enter Service provideremail"
-                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className="col-span-full sm:col-span-3 ">
-                  <label htmlFor="email" className="text-sm text-white">
-                    Service Taking date
-                  </label>
-                  <input
-                    required
-                    id="email"
-                    type="date"
-                   
-                   
-                    name="Servicedate"
-                    placeholder="Enter Service provider"
-                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className="col-span-full  ">
-                  <label htmlFor="email" className="text-sm text-white">
-                    Service PhotoUrl
-                  </label>
-                  <input
-                    id="text"
-                    type="text"
-                    name="photourl"
-                    defaultValue={ServiceImage}
-                    readOnly
-                    placeholder="Enter photo URL"
-                    className="w-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
-                <div className="col-span-full  ">
-                  <label htmlFor="email" className="text-sm text-white">
-                    Service query
-                  </label>
-                  <input
-                  required
-                    id="text"
-                    type="text"
-                    name="servicequery"
-                    
-                    placeholder="Enter your personal query"
-                    className="w-full h-full rounded-md focus:ring    focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                  />
-                </div>
+                    <div className="mt-4">
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
               </div>
-            </fieldset>
-           {users.email===useremail? <button disabled className="btn btn-block bg-black text-yellow-500">
-              Add service
-            </button>: <button  className="btn btn-block bg-black text-yellow-500">
-              Add service
-            </button>}
-         
-   
-  </form>
-                  </div>
-
-                  <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Close
-                    </button>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
             </div>
-          </div>
-        </Dialog>
-      </Transition>
-</div>
-<Footer></Footer>
+          </Dialog>
+        </Transition>
+      </div>
+      <Footer></Footer>
     </div>
   );
 };

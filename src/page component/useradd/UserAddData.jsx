@@ -51,7 +51,7 @@ const UserAddData = () => {
       ServiceName,
     };
     console.log(Serviceinfo);
-    fetch("http://localhost:5020/usersenddata", {
+    fetch("https://server-shihab.vercel.app/usersenddata", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,17 +67,15 @@ const UserAddData = () => {
             icon: "success",
             confirmButtonText: "close",
           });
-          form.reset()
+          form.reset();
         }
       });
   };
   return (
     <div>
       <Helmet>
-               
-               <title>Service Hub || useradddata</title>
-              
-           </Helmet>
+        <title>Service Hub || useradddata</title>
+      </Helmet>
       <Navbar></Navbar>
       <div>
         <TiTleMenu></TiTleMenu>
@@ -109,13 +107,21 @@ const UserAddData = () => {
                       <option disabled selected>
                         Service Name
                       </option>
-                      
-                      <option value={"Personal training"}>Personal training</option>
+
+                      <option value={"Personal training"}>
+                        Personal training
+                      </option>
                       <option value={"Group Fitness"}>Group Fitness</option>
-                      <option value={"Nutrition Coaching"}>Nutrition Coaching</option>
+                      <option value={"Nutrition Coaching"}>
+                        Nutrition Coaching
+                      </option>
                       <option value={"Gym Menberships"}>Gym Menberships</option>
-                      <option value={"Speciallity Program"}>Speciallity Program</option>
-                      <option value={"Wellness Service"}>Wellness Service</option>
+                      <option value={"Speciallity Program"}>
+                        Speciallity Program
+                      </option>
+                      <option value={"Wellness Service"}>
+                        Wellness Service
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -125,7 +131,7 @@ const UserAddData = () => {
                     Service Area
                   </label>
                   <input
-                  required
+                    required
                     id="username"
                     type="text"
                     name="Area"
@@ -139,7 +145,7 @@ const UserAddData = () => {
                   </label>
 
                   <input
-                  required
+                    required
                     id="lastname"
                     type="number"
                     name="price"
@@ -166,7 +172,7 @@ const UserAddData = () => {
                     Service PhotoUrl
                   </label>
                   <input
-                  required
+                    required
                     id="text"
                     type="text"
                     name="photourl"
