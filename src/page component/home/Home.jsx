@@ -4,7 +4,7 @@ import TiTleMenu from "../../sharedcomponent/menu title/TiTleMenu";
 import Minislider from "../../sharedcomponent/minilider/Minislider";
 import Navbar from "../../sharedcomponent/navbar/Navbar";
 import Slider from "../slider/Slider";
-
+import {Helmet} from "react-helmet";
 import "./home.css";
 import PopularService from "./PopularService";
 const Home = () => {
@@ -14,6 +14,11 @@ console.log(datas)
 
   return (
     <div>
+      <Helmet>
+               
+                <title>Service Hub || Home</title>
+               
+            </Helmet>
       <div className=" z-40 lg:fixed lg:w-full lg:nav ">
         <Navbar></Navbar>
       </div>

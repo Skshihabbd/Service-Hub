@@ -4,6 +4,7 @@ import Custom from "../../sharedcomponent/custom/Custom";
 import Swal from "sweetalert2";
 import MyserviceCard from "./MyserviceCard";
 import Footer from "../../sharedcomponent/footer/Footer";
+import { Helmet } from "react-helmet";
 
 const Myservice = () => {
     const { users } = Custom();
@@ -54,6 +55,11 @@ const Myservice = () => {
   };
     return (
         <div>
+          <Helmet>
+               
+               <title>Service Hub || Myservice</title>
+              
+           </Helmet>
       <Navbar></Navbar>
       <h1>{state.length? <div className="grid lg:grid-cols-4 gap-3 w-10/12 mx-auto ">
         {state.map((data) => (

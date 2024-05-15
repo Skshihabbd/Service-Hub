@@ -52,10 +52,10 @@ const UpdateUser = () => {
       .then((info) => {
         if (info.acknowledged) {
           Swal.fire({
-            title: "success!",
-            text: "Do you want to continue",
+            title: "service deleted success!",
+            text: " continue",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "close",
           });
           form.reset()
         }

@@ -5,6 +5,7 @@ import Footer from "../../sharedcomponent/footer/Footer";
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 const Cradviewdetailsmake = () => {
   let [isOpen, setIsOpen] = useState(true)
   const {users}=Custom()
@@ -76,6 +77,11 @@ fetch("http://localhost:5020/requestsend", {
 
   return (
     <div>
+      <Helmet>
+               
+               <title>Service Hub || View details</title>
+              
+           </Helmet>
       <Navbar></Navbar>
       <div className="mt-10 border-2 lg:grid grid-rows-1 lg:grid-cols-2 w-10/12 mx-auto gap-8">
         <div className="border-2">

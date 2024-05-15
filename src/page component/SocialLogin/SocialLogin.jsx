@@ -13,10 +13,10 @@ const SocialLogin = () => {
       console.log(result.user);
       if (result.user) {
         Swal.fire({
-          title: "success!",
-          text: "Do you want to continue",
+          title: "login success!",
+          text: " continue",
           icon: "success",
-          confirmButtonText: "Cool",
+          confirmButtonText: "close",
         });
         navigation(location?.state ? location.state : "/");
       }

@@ -41,7 +41,7 @@ if(result.user){
 
         updateUser(name, image).then((result) => {
           Swal.fire({
-            title: "Login success!",
+            title: "SignUp success!",
             text: " continue",
             icon: "success",
             confirmButtonText: "Close",

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Custom from "../../sharedcomponent/custom/Custom";
 import Footer from "../../sharedcomponent/footer/Footer";
 import TiTleMenu from "../../sharedcomponent/menu title/TiTleMenu";
+import { Helmet } from "react-helmet";
 
 const UserAddData = () => {
   const { users } = Custom();
@@ -61,10 +62,10 @@ const UserAddData = () => {
       .then((info) => {
         if (info.acknowledged) {
           Swal.fire({
-            title: "success!",
-            text: "Do you want to continue",
+            title: "service added success!",
+            text: " continue",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "close",
           });
           form.reset()
         }
@@ -72,6 +73,11 @@ const UserAddData = () => {
   };
   return (
     <div>
+      <Helmet>
+               
+               <title>Service Hub || useradddata</title>
+              
+           </Helmet>
       <Navbar></Navbar>
       <div>
         <TiTleMenu></TiTleMenu>
